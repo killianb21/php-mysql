@@ -33,6 +33,7 @@
                 <i><?php echo displayAuthor($recipe['author'], $users); ?></i>
             </article>
         <?php endforeach ?>
+
     </div>
 
     <!-- inclusion du bas de page du site -->
