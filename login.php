@@ -9,6 +9,7 @@
             $_SESSION['password'] = $user['password'];
             $_SESSION['full_name'] = $user['full_name'];
             $loggedUser = [ 'email' => $user['email'], ];
+            setcookie('LOGGED_USER','user@exple.com',time()+365*24*3600,"","",true,true);
         }
 
         else {
@@ -18,6 +19,10 @@
     }
  }
  ?>
+<?php
+if (isset($_COOKIE['LOGGED_USER'])) {
+$loggedUser = ['email' => $_COOKIE['LOGGED_USER'],];
+?>
 
  <!-- Si utilisateur/trice est non identifié(e), on affiche le formulaire -->
  <?php if ( !isset($loggedUser) ) : ?>
