@@ -1,9 +1,13 @@
  <?php
+ session_start();
 
  // Validation du formulaire
  if (isset($_POST['email']) && isset($_POST['password'])) {
     foreach ($users as $user) {
         if ( $user['password'] == $_POST['password'] && $user['email'] == $_POST['email'] ) {
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['password'] = $user['password'];
+            $_SESSION['full_name'] = $user['full_name'];
             $loggedUser = [ 'email' => $user['email'], ];
         }
 
@@ -43,6 +47,6 @@
  <!-- Si utilisateur/trice bien connectée on affiche un message de succès -->
  <?php else: ?>
     <div class="alert alert-success" role="alert">
-        Bonjour <?php echo $loggedUser['email']; ?> et bienvenue sur le site !
+        Bonjour <?php echo $_SESSION['email']; ?> et bienvenue sur le site !
     </div>
  <?php endif; ?>
