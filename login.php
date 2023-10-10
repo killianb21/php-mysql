@@ -22,6 +22,7 @@
 <?php
 if (isset($_COOKIE['LOGGED_USER'])) {
 $loggedUser = ['email' => $_COOKIE['LOGGED_USER'],];
+}
 ?>
 
  <!-- Si utilisateur/trice est non identifié(e), on affiche le formulaire -->
@@ -54,4 +55,6 @@ $loggedUser = ['email' => $_COOKIE['LOGGED_USER'],];
     <div class="alert alert-success" role="alert">
         Bonjour <?php echo $_SESSION['email']; ?> et bienvenue sur le site !
     </div>
- <?php endif; ?>
+ <?php 
+   endif; 
+ ?>

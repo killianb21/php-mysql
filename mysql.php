@@ -16,11 +16,3 @@ try {
     die('Erreur : '.$exception->getMessage());
 }
 ?>
-
-<?php
-
-$sqlQuery = 'SELECT * FROM recipes WHERE is_enabled = 1'; 
-$recipesStatement = $db->prepare($sqlQuery);
-$recipesStatement->execute();
-$recipes = $recipesStatement->fetchAll();
-?>

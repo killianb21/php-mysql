@@ -28,7 +28,14 @@
 
  <!-- Si l'utilisateur existe, on affiche les recettes -->
     <?php if(isset($loggedUser)): ?>
-        <?php foreach(getRecipes($recipes) as $recipe) : ?>
+      <?php
+
+   $sqlQuery = 'SELECT * FROM recipes WHERE is_enabled = 1'; 
+   $recipesStatement = $db->prepare($sqlQuery);
+   $recipesStatement->execute();
+   $recipes = $recipesStatement->fetchAll();
+?>
+        <?php foreach($recipes as $recipe) : ?>
             <article>
                 <h3><?php echo $recipe['title']; ?> </h3>
                 <div><?php echo $recipe['recipe']; ?> </div>
